@@ -379,6 +379,7 @@ class WeatherMainWindow(Gtk.ApplicationWindow):
     # ============= Refresh buttom methods ==============
     def _refresh_weather(self, widget=None):
         global updated_at
+        global schedule_created
         # Ignore refreshing weather within 5 second
 
         if len(self.added_cities) == 0:

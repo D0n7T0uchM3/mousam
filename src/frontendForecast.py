@@ -53,7 +53,7 @@ class Forecast(Gtk.Grid):
         self.attach(self.forecast_stack, 0, 1, 1, 1)
 
         tab_box.append(style_buttons_box)
-        self.page_stacks("tomorrow")
+        self.page_stacks("weekly")
 
     # ============= Button Click Methods ==============
     def _on_tomorrow_forecast_btn_clicked(self, widget):
