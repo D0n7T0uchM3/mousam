@@ -32,6 +32,7 @@ from gi.repository import Gtk, Adw, Gio, Gdk, GLib
 
 global updated_at
 updated_at = time.time()
+schedule_created = False
 
 
 class WeatherMainWindow(Gtk.ApplicationWindow):
@@ -384,6 +385,11 @@ class WeatherMainWindow(Gtk.ApplicationWindow):
             thread = threading.Thread(target=self._load_weather_data, name="load_data")
             thread.start()
 
+        elif not schedule_created:
+            # Schedule next run in 1 hour
+            threading.Timer(3600, self._refresh_weather).start()
+            schedule_created = True
+        
         elif time.time() - updated_at < 5:
             updated_at = time.time()
             self.toast_overlay.add_toast(
